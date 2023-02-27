@@ -1,0 +1,289 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[LAE, T1]{fontenc}
+\usepackage{ifthen}
+\usepackage{calc}
+\usepackage[english, arabic]{babel}
+
+\usepackage{cmap} % Search and copy Arabi PDF files
+
+\usepackage{url}
+
+\usepackage{graphicx}
+
+\usepackage{siunitx}
+
+% use of ams math, fonts and symbols
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{color}
+\usepackage{everyshi}
+
+% the package setspace allows us to change the \baseline 
+%  (the vertical length of a line), it has three commands:
+% \doublespacing    : for double spacing
+% \onehalfspacing  : for one line and a half spacing
+% \singlespacing     : for default one line spacing
+\usepackage{setspace}
+\doublespacing
+%\onehalfspacing
+%\singlespacing
+
+\renewcommand{\I}[1]{\if@farsi\FarsiEncoding\else\ArabicEncoding\fi\textLR{#1}}%
+\renewcommand{\EI}[1]{\textLR{\FarsiEncoding  \textLR{#1}}}%
+
+\usepackage{fancyhdr}
+\usepackage{lastpage} % enable use of Page n Of m
+%\usepackage{tocbibind} %add
+
+% like :
+% \rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
+
+\renewcommand \thechapter {\textLR{\arabic{chapter}}}
+
+\renewcommand\theequation
+  {\textLR{\thechapter.{\textLR{\arabic{equation}}}}}
+
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1] {{\markright{\thesection\ #1}}}
+%\markboth{chapter name}{}
+
+\renewcommand{\thepart}{\textLR{\Roman{part}}}
+
+\renewcommand\thesection
+  {\textLR{\thechapter.{\textLR{\arabic{section}}}}}
+
+\renewcommand\thesubsection
+  {\textLR{\thesection.{\textLR{\arabic{subsection}}}}}
+
+\renewcommand\thesubsubsection
+  {\textLR{\thesubsection.{\textLR{\arabic{subsubsection}}}}}
+
+\renewcommand \thepage
+    {\textLR{\arabic{page}}}
+
+
+\renewcommand\addcontentsline[3]{%
+\addtocontents{#1}{%
+\protect\contentsline{#2}{#3}{\I{\thepage}}}}
+
+
+
+% change the enumeration of chapter, section, subsection, ...
+\renewcommand{\thepart}{\textLR{\Roman{part}}}
+\renewcommand \thechapter {\textLR{\arabic{chapter}}}
+
+\renewcommand\thesection {\textLR{{\textLR{\arabic{section}.\thechapter}}}}
+\renewcommand\thesubsection {\textLR{{\textLR{\arabic{subsection}.\thesection}}}}
+\renewcommand\thesubsubsection {\textLR{{\textLR{\arabic{subsubsection}.\thesubsection}}}}
+
+
+\renewcommand \thepage {\textLR{\arabic{page}}}
+
+\renewcommand \chaptername {\textLR{\arabic{الفصل}}}
+\renewcommand \bibname{المراجع}
+
+\renewcommand\addcontentsline[3]{%
+\addtocontents{#1}{%
+\protect\contentsline{#2}{#3}{\I{\thepage}}}}
+
+\newcommand \azcite[1] {\textLR{\cite{#1}}}
+\newcommand \citeLR[1] {\textLR{\cite{#1}}}
+\newcommand \citeRL[1] {\textRL{\cite{#1}}}
+
+\def \DetailedCalculation       {1}
+\def \MidiumDetailedCalculation {2}
+\def \NotDetailedCalculation {3}
+
+\newcommand\azmakefigcaption[2]{%
+ \vspace{\abovecaptionskip}%
+  \sbox\@tempboxa{#1: #2}%
+  \idthenelse{\lengthtest{\wd\@tempboxa >\linewidth}}%
+	{\noindent #2: #1\par}%
+	{\centering
+		\makebox[\linewidth][c]{\usebox\@tempboxa\par}
+	}%
+  \vspace{\belowcaptionskip}%
+}
+
+\renewcommand \thefigure
+    {\textLR{{\textLR{\arabic{figure}}}.\thechapter}}
+
+\renewcommand \thetable
+    {\textLR{{\textLR{\arabic{table}}}.\thechapter}}
+
+\def\fnum@figure{\I{\thefigure}\nobreakspace\figurename}
+
+\newsavebox{\tempboxaz}
+
+\newcommand\azfigcaption[1]{%
+  \refstepcounter{figure} 
+  \ifx\@captype\@undefined
+    \@latex@error{\noexpand\caption outside float}\@ehd
+    \expandafter\@gobble%
+  \else%
+	\ifx\@captype\@figure%
+	\else %
+               \sbox\tempboxaz{\textRL{\figurename \  \thefigure : #1}}
+	    \vskip\abovecaptionskip%
+
+	    \ifdim \wd\tempboxaz >\hsize%
+%		\noindent\textRL{\figurename \  \thefigure : #1\hfil}\par%
+		{\figurename \  \thefigure\ : #1\hfil}\par%
+	    \else%
+     	          \textRL{\hfil \figurename \  \thefigure : #1 \hfil}%
+	    \fi%
+	    \vskip\belowcaptionskip%
+	\fi%
+  \fi%
+  }
+
+
+\newcommand{\azmaketitle}{%
+%  \begin{center}
+%   \vspace{5cm}
+%    \vspace{6cm}\par
+%    {\Large{     \  }}\par
+%    \vspace{5cm}
+%    {\colorB\Huge\textthol{\@title}}\par
+     {\Huge\textmash{\@title}}\par
+%    {\colorB\Huge\textshado{\@title}}\par
+%    {\colorB\Huge\textgranada{\@title}}\par
+    \vspace{5cm}
+    {\Huge\@author}\par
+    \vspace{1cm}
+    {\huge\@date}\par
+%  \end{center}
+}
+
+\newcommand{\aztitling}{
+  \begin{titlepage}
+  \azmaketitle
+  \vspace{\stretch{8}}
+\end{titlepage}}
+
+
+
+\usepackage{graphicx}
+
+\usepackage[svgnames]{xcolor}	% Enabling colors by their 'svgnames'
+%\definecolor{bl}{rgb}{0.0,0.2,0.6} 
+
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}
+%\usepackage[compact]{titlesec} 
+\usepackage[outermarks]{titlesec}
+
+%\titleformat{\chapter} {\LARGE\sffamily\slshape} {\thechapter}{1em}{}
+\titleformat{\chapter}[display]
+%{\center \color{DarkTurquoise}}
+{\center \color{Black}}
+{\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{2pt}%
+\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{1pc}%
+\Huge{\chaptertitlename} \thechapter}
+{1pc}
+%{\center \color{DarkTurquoise}%
+{\center \color{Black}%
+\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{2pt}%
+\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{1pc}%
+\Huge \vspace{2pc} }
+%\Huge \vspace{2pc} \textgranada}
+
+
+%% Change font of al section commands
+%\allsectionsfont{\color{blue}\scshape\selectfont}
+%\chapterfont{\color{Crimson}\normalfont\scshape\selectfont}
+%\sectionfont{\color{DarkRed}\ttfamily\scshape\selectfont}
+%\subsectionfont{\color{DarkMagenta}\fontfamily{cmr}\fontseries{b}\selectfont}
+%\subsubsectionfont{\color{MediumBlue}}
+
+
+\allsectionsfont{\color{Black}}
+\sectionfont{\color{Black}}%DarkRed}}
+\subsectionfont{\color{Black}}
+\subsubsectionfont{\color{Black}}
+
+% use includepdf to add already exiting pdf pages
+\usepackage{pdfpages}
+\usepackage[left, pagewise]{lineno}
+\renewcommand {\thelinenumber} %
+	{\small \textLR{\arabic{linenumber}\hspace{0.5cm}}}
+	
+\newcommand{\clearemptydoublepage}{ \newpage{\pagestyle{plain}\cleardoublepage}}
+\newcommand{\totallyemptydoublepage}{ \newpage{\pagestyle{empty}\cleardoublepage}}
+\usepackage{watermark}
+\usepackage{lipsum}% for auto generating text
+\usepackage{afterpage}
+
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry}
+
+\geometry{paperwidth=210mm, lmargin=30mm,rmargin=30mm,
+			tmargin=25mm, paperheight=297mm} 
+
+\usepackage{longtable}
+
+\usepackage[svgnames]{xcolor}
+\usepackage{setspace}
+%\usepackage{tabu}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{alltt}
+\usepackage{textcomp}
+\usepackage{amsmath,empheq}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+\pagenumbering{arabic}
+\selectlanguage{arabic}
+\TOCLanguage{arabic}
+\pagestyle{fancy}
+\fancyhf{} % delete current setting for header and footer
+
+\fancyhead[RE,LO]{\bfseries \textLR{\thepage}}
+%\fancyhead[RO]{\bfseries \textRL{\rightmark}}
+%\fancyhead[LE]{\bfseries \textRL{\leftmark}}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % make space for the rule
+
+\fancypagestyle{plain}{%
+\fancyhead{} % get rid of headers on plain pages
+\renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\input{front_page.tex}
+\tableofcontents 
+\listoffigures
+\listoftables
+\setlength{\parskip}{\baselineskip}
+\input{abstract.tex}
+%\input{general_introduction.tex}
+%\input{literature_review.tex}
+%\input{model.tex}
+\input{results.tex}
+%\input{conclusion.tex}
+\clearpage
+\renewcommand \appendixname {\textRL{الملحق}}
+\appendix
+\renewcommand{\thechapter}{\textLR{\Roman{chapter}}}
+\renewcommand \bibname {\textRL{المراجع}}
+%\begin{otherlanguage}{english}
+%\bibliographystyle{plain}
+%\renewcommand \bibname {\textRL{المراجع}}
+%\bibliography{reference}
+%\end{otherlanguage}
+\input{bibliography.tex}
+\clearemptydoublepage
+\end{document}
+
