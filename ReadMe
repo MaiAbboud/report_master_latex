@@ -2,3 +2,4 @@ requirement
 sudo a[t-get install texstudio
 sudo apt-get install texlive-fonts-extra 
 sudo apt-get install texlive-lang-arabic
+sudo apt -y install texlive-science
