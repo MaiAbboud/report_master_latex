@@ -114,8 +114,6 @@ $1$ عن وجود جزء من الغرض خارج نطاق الصورة،و تع
 \end{figure}
 حيث يمتلك هذا المخدم القيم الحقيقية ويقارنها بالقيم المرسلة، ومن ثم يحسب كل من المعياريين
 $mAO,mSR$
-%فقرة%%
-%\ref{section:benchmark}،
 كما في الشكل
 \ref{fig:got10k_result_mai}.
 \newline
@@ -175,7 +173,6 @@ mAO = \frac{1}{C} \Sigma_{c=1}^C(\frac{1}{|S_c|} \Sigma_{i \in S_c}AO_i)
 $AO$
 لها
 أكبر من نسبة معينة.
-%\textLR{ratio}.
 في معظم الأحيان يتم اظهار النتائج من أجل النسبتين 
 $0.75،0.5$.
 وكما في 
@@ -209,19 +206,7 @@ $threshold$،
 عن الدقة في الملاحقة.
 \subsubsection{منحنيات التقييم - منحني الدقة 
 	\textLR{Precision Curve}}
-يعبر منحني الدقة في كل نقطة منه عن نسبة الإطارات التي بعد مركز الغرض المقدر عن القيمة الحقيقة أقل من حد معين.
-%\section{مجموعات معطيات تدريب أخرى}
-% \selectlanguage{english}
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\textwidth]{images/dataset}
-%	\caption{
-%		\cite{Marvasti}
-%		\textRL{}
-%	}
-%	\label{fig:dataset}
-%\end{figure}
-%\selectlanguage{arabic}
+يعبر منحني الدقة في كل نقطة منه عن نسبة الإطارات التي بعد مركز الغرض المقدّر عن القيمة الحقيقة أقل من حد معين.
 \section{النتائج}
 في هذه الفقرة سنعرض نتائج النموذج الأساسي 
 \textLR{SwinTrack-Tiny}،
@@ -235,7 +220,7 @@ $threshold$،
 الذي يستخدم 
 \textLR{SwinTransformer-Tiny}
 كـ
-\textLR{backbone}.
+\textLR{backbone}،
 واستخدمنا أوزان النموذج المدرب مسبقاً
 على مجموعة المعطيات 
 \textLR{GOT-10k}
@@ -247,7 +232,7 @@ $threshold$،
 \textLR{template}
 الجديد كما ذكرنا سابقاً .
 سنذكر في هذا الفصل نتائج التدريب والاختبار لتجربتين.
-في كلا التجربتين أثناء مرحلة التدريب، يتم اختيار كل من الـ 
+في كلتا التجربتين أثناء مرحلة التدريب، يتم اختيار كل من الـ 
 \textLR{template}
 الابتدائي والـ
 \textLR{template}
@@ -270,207 +255,169 @@ $h = 4$.
 \textLR{epoch}
 يتم التدريب على 
 $131072$ 
-عينة.
+عينة من مجموعة التدريب.
 \subsubsection{نتائج تدريب التجربة الأولى}
 لتوليد منحنيات الخطأ وتتبع أداء النظام أثناء التدريب استعنا بمكتبة
-\textLR{Wandb}
-%\begin{figure}[!h]
-%	\centerline{\includegraphics[width=\textwidth]{images/got10k_SuccessCurve}}
-%	\caption{
-%		\textRL{منحني النجاج من أجل عدة خوارزميات ملاحقة}
-%		\textLR{\cite{got10k}}}
-%	\label{fig:got10k_SuccessCurve}
-%\end{figure}
+\textLR{Wandb}.
+حيث يبين الشكل 
+\ref{chart:epoch1}
+رقم العينة على المحور الأفقي، بينما رقم الـ
+\textLR{epoch}
+على المحور العمودي.
+ بينما يبين الشكل 
+\ref{chart:lr1}
+قيم معدل التدريب 
+\textLR{learning rate}
+أثناء عملية التدريب. 
+\newline
+أما كل من الأشكال
+\ref{chart:loss_varifocal1},\ref{chart:loss_iou1},\ref{chart:loss1}
+فهي تعبر عن تغير توابع الخطأ الممثلة في المعادلات
+\ref{eq:vlclass},\ref{eq:vlregress}.
+إذ نلاحظ هبوط منحنيات وسطي الخطأ، وذلك بسبب تغيير أوزان النموذج أثناء تدريبه على مجموعة المعطيات.
 
  \begin{figure}[H]
  	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-6-m8q6253z0}}
  	\caption{
- 		\textRL{رقم}
+ 		\textRL{رقم الـ}
  		\textLR{epoch}
  		\textRL{كتابع لرقم  عينة التدريب}}
-% 	\label{fig:}
+ 	\label{chart:epoch1}
  \end{figure}
- 
   \begin{figure}[H]
  	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-12-bzoemlec5}}
  	\caption{
- 		\textRL{معدل التدريب}}
-% 	\label{fig:}
+ 		\textRL{معدل التدريب كتابع لرقم  عينة التدريب}}
+ 	\label{chart:lr1}
  \end{figure}
 
-%\begin{figure}[H]
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-6-m8q6253z0}
-%	\caption{
-%		\textRL{رقم}
-%		epoch
-%		\textRL{كتابع لرقم  عينة التدريب}}
-%	\endminipage\hfill
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-12-bzoemlec5}
-%	\caption{\textRL{معدل التدريب}}
-%	\endminipage
-%\end{figure}
-
-%\begin{figure}[H]
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-9-8yjlirrqx}
-%	\caption{\textRL{تابع خطأ شبكة التصنيف أثناء التدريب}}
-%	\endminipage\hfill
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-13-ffs6mrffa}
-%	
-%	\caption{regression
-%		\textRL{تابع خطأ شبكة ال}}
-%	\endminipage\hfill
-%\end{figure}
-
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-9-8yjlirrqx}}
 	\caption{
 		\textRL{تابع خطأ شبكة التصنيف أثناء التدريب}
-%		\textLR{}
 	}
-%	\label{fig:}
+	\label{chart:loss_varifocal1}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-13-ffs6mrffa}}
 	\caption{
-		\textRL{تابع خطأ شبكة ال}
-		\textLR{regression}}
-%	\label{fig:}
+		\textRL{تابع خطأ شبكة الـ}
+		\textLR{regression}
+		\textRL{أثناء التدريب}
+	}
+	\label{chart:loss_iou1}
 \end{figure}
 
-% \selectlanguage{english}
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-11-jg4qpu2ty}}
 	\caption{
 		\textRL{تابع الخطأ الكلي أثناء التدريب}
-%		\textLR{}
 	}
-	\label{fig:}
+	\label{chart:loss1}
 \end{figure}
-
-%\begin{figure}[H]
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-11-jg4qpu2ty}
-%	\caption{\textRL{تابع الخطأ الكلي أثناء التدريب}}
-%	\endminipage\hfill
-%\end{figure}
-%\selectlanguage{arabic}
-نلاحظ هبوط منحنيات وسطي الخطأ أثناء التدريب.
 \subsubsection{ نتائج التجربة الأولى على مجموعة الـ
 \textLR{validation}}
+يتم اختبار النموذج على مجموعة الـ
+\textLR{validation}
 بعد كل 
 \textLR{epoch}
-أثناء عملية التدريب يتم اختبار النموذج على مجموعة الـ
-\textLR{validation}.
-
-% \selectlanguage{english}
-%\begin{figure}[H]
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-1-5x2brafi7}
-%\caption{val
-%	\textRL{خطأ شبكة التصنيف على مجموعة}}
-%	\endminipage\hfill
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-2-owiohngs7}
-%\caption{
-%	val
-%	\textRL{على مجموعة }
-%	reg
-%	\textRL{تابع خطأ شبكة ال}}
-%	\endminipage\hfill
-%\end{figure}
-%\begin{figure}[H]
-%	\minipage{0.49\textwidth}
-%	\includegraphics[width=\linewidth]{charts/Section-2-Panel-0-jvrhhrv9d}
-%	\caption{val
-%		\textRL{تابع الخطأ الكلي على مجموعة}}
-%	\endminipage\hfill
-%\end{figure}
-%\selectlanguage{arabic}
+وذلك أثناء عملية التدريب.
+تبين الأشكال
+\ref{chart:val_loss_varifocal},\ref{chart:val_loss_iou},\ref{chart:val_loss}
+منحنيات الخطأ لشبكتي التصنيف والـ
+\textLR{regression}،
+ومنحني الخطأ الكلي.
+وكما في منحنيات وسطي الخطأ أثناء التدريب، فإن وسطي خطأ النموذج على معطيات الـ
+\textLR{validation} 
+في تناقص بعد كل 
+\textLR{epoch}.
 \begin{figure}[H]
 	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-1-5x2brafi7}}
 	\caption{
-		\textRL{خطأ شبكة التصنيف على مجموعة}
-		\textLR{val}
+		\textRL{خطأ شبكة التصنيف على مجموعة الـ}
+		\textLR{validation}
 	}
-%	\label{fig:}
+	\label{chart:val_loss_varifocal}
 \end{figure}
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-2-owiohngs7}}
 	\caption{
-		\textRL{تابع خطأ شبكة ال}
-		\textLR{reg}
-		\textRL{على مجموعة}
-		\textLR{val}
+		\textRL{تابع خطأ شبكة الـ}
+		\textLR{regression}
+		\textRL{على مجموعة الـ}
+		\textLR{validation}
 	}
-%	\label{fig:}
+	\label{chart:val_loss_iou}
 \end{figure}
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=0.7\textwidth]{charts/Section-2-Panel-0-jvrhhrv9d}}
 	\caption{
-		\textRL{تابع الخطأ الكلي على مجموعة}
-		\textLR{val}
+		\textRL{تابع الخطأ الكلي على مجموعة الـ}
+		\textLR{validation}
 	}
-%	\label{fig:}
+	\label{chart:val_loss}
 \end{figure}
 
-وكما في منحنيات وسطي الخطأ أثناء التدريب، فإن خطأ النموذج على معطيات الـ
-\textLR{validation} 
-في تناقص.
-\subsubsection{أداء النظام أثناء التجربة الأولى}
-\selectlanguage{english}
-\begin{figure}[H]
-	\minipage{0.49\textwidth}
-	\includegraphics[width=0.7\linewidth]{charts/Section-4-Panel-10-ez7r8q2s1}
-	\caption{\textRL{أثناء التدريب}
-		GPU
-		\textRL{درجة حرارة الـ}}
-	\endminipage\hfill
-	\minipage{0.49\textwidth}
-	\includegraphics[width=0.7\linewidth]{charts/Section-4-Panel-11-7ugto7ti8}
-	\caption{
-		\textRL{أثناء التدريب}
-		GPU
-		\textRL{نسبة استخدم الـ}}
-	\endminipage
-\end{figure}
-\begin{figure}[H]
-	\minipage{0.49\textwidth}
-	\includegraphics[width=0.7\linewidth]{charts/Section-4-Panel-6-0i8v5s4ys}
-	\caption{GPU
-		\textRL{نسبة استهلاك الطاقة للـ}}
-	\endminipage\hfill
-\end{figure}
-\selectlanguage{arabic}
+%\subsubsection{أداء النظام أثناء التجربة الأولى}
+%\selectlanguage{english}
+%\begin{figure}[H]
+%	\minipage{0.49\textwidth}
+%	\includegraphics[width=0.7\linewidth]{charts/Section-4-Panel-10-ez7r8q2s1}
+%	\caption{\textRL{أثناء التدريب}
+%		GPU
+%		\textRL{درجة حرارة الـ}}
+%	\endminipage\hfill
+%	\minipage{0.49\textwidth}
+%	\includegraphics[width=0.7\linewidth]{charts/Section-4-Panel-11-7ugto7ti8}
+%	\caption{
+%		\textRL{أثناء التدريب}
+%		GPU
+%		\textRL{نسبة استخدم الـ}}
+%	\endminipage
+%\end{figure}
+%\begin{figure}[H]
+%	\minipage{0.49\textwidth}
+%	\includegraphics[width=0.7\linewidth]{charts/Section-4-Panel-6-0i8v5s4ys}
+%	\caption{GPU
+%		\textRL{نسبة استهلاك الطاقة للـ}}
+%	\endminipage\hfill
+%\end{figure}
+%\selectlanguage{arabic}
 \subsection{التجربة الثانية}
-تجريب كتلة انتباه تقاطعي بثمانية رؤوس
+تم تجريب كتلة انتباه تقاطعي بثمانية رؤوس
 $h = 8$.
-تم استخدام أوزان النموذج المدرب في التجربة الأولى كأوزان ابتدائية، وأثناء التدريب تم تجميد الأوزان ما عدا أوزان كتلة الانتباه.
+مع استخدام أوزان النموذج المدرب في التجربة الأولى كأوزان ابتدائية، وأثناء التدريب تم تجميد الأوزان ما عدا أوزان كتلة الانتباه.
 تم التدريب عن طريق وحدة معالجة الرسومات 
 \textLR{GPU NVIDIA GeForce 3060 Ti}
 واختيار 
 \textLR{Epoches = 9 , Batch size=1}.
-\subsection{مناقشة النتائح}
+\subsection{عرض ومناقشة النتائح}
+سنعرض في هذه الفقرة نتائج اختبار النموذج من أجل التجربتين السابقتين على مجموعة الـ
+\textLR{validation}،
+وعلى مجموعة الاختبار 
+\textLR{testing}.
+وبما أننا لا نملك القيم الحقيقية لمجموعة الاختبار، وبما أن مجموعة الاختبار لا تتقاطع مع مجموعة التدريب والـ 
+\textLR{validation}
+من حيث صنف الغرض، فسيكون تقييم النموذج على مجموعة الاختبار هو الأكثر أهمية، لأنه يعبر عن قدرة النموذج على التعميم.
+\newline
 يوضح الجدول
 \ref{table:my_model_compare_val}
-نتائج الاختبار على معطيات الـ
+نتائج الاختبار على مجموعة الـ
 \textLR{validation}
 الخاصة بـ
 \textLR{GOT-10k}،
 وذلك من أجل الخوارزمية الأساسية 
 \textLR{SwinTrack-Tiny\cite{swinTrack}}،
-ومن أجل التجربة الأولى، وبما أننا أضفنا تابع انتباه بأربع رؤوس مع إضافة معلومات زمانية فرمزنا للنموذج بـ
-\textLR{SwinTrack-t4}،
-ونموذج التجربة الثانية بتابع انتباه بـ
+ومن أجل التجربتين الموضحتين سابقاَ. وبما أننا أضفنا تابع انتباه بأربع رؤوس مع إضافة معلومات زمانية فرمزنا للنموذج في التجربة الأولى بـ
+\textLR{SwinTrack-t4}.
+ولنموذج التجربة الثانية بـ 
+\textLR{SwinTrack-t8}،
+كوننا استخدمنا تابع انتباه بثمانية
 $8$
-رؤوس بالرمز
-\textLR{SwinTrack-t8}.
+رؤوس.
 أما الجدول 
 \ref{table:my_model_compare_test}
 فيوضح نتائج اختبار الخوارزميات السابقة على مجموعة الاختبار 
