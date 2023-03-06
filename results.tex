@@ -563,8 +563,11 @@ $2022$.
 	\label{fig:precision}
 \end{figure}
 
-\subsubsection{اختبارت على  الفيديو}
-ألوان النماذج كمايلي
+\subsubsection{اختبارت الخوارزميات على  الفيديو}
+اختبرنا الخوارزميات السابقة على عدة فيديوهات من مجموعة الـ 
+\textLR{validation}، 
+وأظهرنا نتائج الملاحقة في الصور التالية، بحيث يقابل كل لون من ألوان المستطيلات إلى خوارزمية وفق مايلي:
+%ألوان النماذج كمايلي
 \begin{itemize}
 	\item 	القيم الحقيقة باللون الأخضر
 	\item
@@ -582,73 +585,72 @@ $2022$.
 \end{itemize}
 
 في الشكل
-\ref{fig:my_model_result_success1}
-اليسار
+\ref{fig:video_success_1}
 مثال عن نجاح النماذج في الملاحقة، ولكن النموذج الأصلي بدقة أقل من النموذجين المعدلين، وذلك بسبب وجود أغراض مشابهة للغرض الملاحَق.
-أيضاً بالنسبة للشكل
-\ref{fig:my_model_result_success1}
-اليمين
-فإن النموذج الأصلي يفشل في الملاحقة، بينما النموذج المعدل حسن من الأداء في هذه الحالة.
-\newline
-في الشكل 
-\ref{fig:my_model_result_success3}
-اليسار
-نتيجة الملاحقة في بداية الفيديو، وعندما يتغير شكل الغرض بشكل كبير كما في الشكل 
-\ref{fig:my_model_result_success3}
-اليمين
-فإن النموذج الأصلي لا يستطيع أن يحدد مكان الغرض بدقة النموذجين المعدلين، وذلك كون التعديل المضاف يأخذ بعين الإعتبار التغيرات التي تطرأ على شكل الغرض، ويدخلها إلى النموذج من جديد.
-\newline
-أما في الشكل
-	\ref{fig:my_model_result_fail1}
-	اليسار
-	فيكون المطلوب ملاحقة أغراض صغيرة، ووجود أغراض مشابهة بجوار الغرض المطلوب.
-	هنا نرى في الشكل 
-	\ref{fig:my_model_result_fail1}
-	اليمين
-	فشل النموذجين المعدلين بينما ينجح النموذج الأصلي في هذه الحالة.
-	وأيضا فيما يتعلق بالشكلين
-	\ref{fig:my_model_result_fail3}
-	اليسار
-		و
-	\ref{fig:my_model_result_fail3}
-	اليمين.
-	\newline
-	نستنتج من الفيديوهات السابقة أن التعديل قد حسن من الأداء من أجل الأغراض التي يتغير مظهرها بشكل كبير، لكن ليس من أجل الأغراض الصغيرة أو في حالة وجود أغراض مشابهة للغرض المطلوب ملاحقته.
-	هنا يمكن تفسير ذلك بأن النموذجين المعدلين مدربان على تغير مظهر الهدف في الحسبان، وبالتالي عند وجود أغراض مشابهة فإنه لايستطيع التمييز بينها وبين الغرض المطلوب ملاحقته في أثناء تغير مظهره.
 \begin{figure}[H]
-	\centerline{
-	\includegraphics[width=0.5\linewidth]{images/results/success/project_52}
-	\quad
-	\includegraphics[width=0.5\linewidth]{images/results/success/project_161}}
-	\caption{\textRL{}}
-	\label{fig:my_model_result_success1}
+	\centerline{\includegraphics[width=\textwidth]{images/results/success/project_52}}
+	\caption{\textRL{مثال عن الملاحقة مع وجود أغراض مشابهة}}
+	\label{fig:video_success_1}
+\end{figure}
+أيضاً بالنسبة للشكل
+\ref{fig:video_success_2}
+فإن النموذج الأصلي يفشل في الملاحقة، بينما النموذج المعدل حسن من الأداء في هذه الحالة.
+\begin{figure}[H]
+	\centerline{\includegraphics[width=\textwidth]{images/results/success/project_161}}
+	\caption{\textRL{مثال عن الملاحقة مع وجود أغراض مشابهة}}
+	\label{fig:video_success_2}
+\end{figure}
+في الشكل 
+\ref{fig:video_success_3_initial}
+نتيجة الملاحقة في بداية الفيديو، وعندما يتغير شكل الغرض بشكل كبير كما في الشكل 
+\ref{fig:video_success_3}،
+فإن النموذج الأصلي لا يستطيع أن يحدد مكان الغرض بدقة النموذجين المعدلين، وذلك كون التعديل المضاف يأخذ بعين الإعتبار التغيرات التي تطرأ على شكل الغرض، ويدخلها إلى النموذج من جديد.
+\begin{figure}[H]
+	\centerline{\includegraphics[width=\textwidth]{images/results/success/project_1802}}
+	\caption{\textRL{مثال عن الملاحقة مع تغير كبير في شكل الغرض}}
+	\label{fig:video_success_3_initial}
 \end{figure}
 
 \begin{figure}[H]
-	\centerline{
-	\includegraphics[width=0.5\linewidth]{images/results/success/project_1802}
-	\quad
-	\includegraphics[width=0.5\linewidth]{images/results/success/project_180}}
-	\caption{\textRL{}}
-	\label{fig:my_model_result_success3}
+	\centerline{\includegraphics[width=\textwidth]{images/results/success/project_180}}
+	\caption{\textRL{مثال عن الملاحقة مع تغير كبير في شكل الغرض}}
+	\label{fig:video_success_3}
 \end{figure}
-%
-%
+أما في الشكل
+	\ref{fig:video_fail_1_initial}
+	فيكون المطلوب ملاحقة أغراض صغيرة، ووجود أغراض مشابهة بجوار الغرض المطلوب.
+	هنا نرى في الشكل 
+	\ref{fig:video_fail_1}
+	فشل النموذجين المعدلين بينما ينجح النموذج الأصلي في هذه الحالة.
 \begin{figure}[H]
-	\centerline{
-	\includegraphics[width=0.5\linewidth]{images/results/failed/project_175.avi}
-	\quad
-	\includegraphics[width=0.5\linewidth]{images/results/failed/project_175.avi1}}
-	\caption{\textRL{}}
-	\label{fig:my_model_result_fail1}
+	\centerline{\includegraphics[width=\textwidth]{images/results/failed/project_175.avi}}
+	\caption{\textRL{ 
+			مثال عن ملاحقة أغراض صغيرة - بداية عملية الملاحقة
+	}}
+	\label{fig:video_fail_1_initial}
 \end{figure}
-%
-%
+
 \begin{figure}[H]
-	\centerline{
-	\includegraphics[width=0.5\linewidth]{images/results/failed/project_129.avi2}
-	\quad
-	\includegraphics[width=0.5\linewidth]{images/results/failed/project_129.avi3}}
-	\caption{\textRL{}}
-	\label{fig:my_model_result_fail3}
+	\centerline{\includegraphics[width=\textwidth]{images/results/failed/project_175.avi1}}
+	\caption{\textRL{
+			مثال عن ملاحقة أغراض صغيرة - أثناء عملية الملاحقة
+	}}
+	\label{fig:video_fail_1}
+\end{figure}	
+	وأيضا فيما يتعلق بالشكلين
+	\ref{fig:video_fail_2_initial}
+		و
+	\ref{fig:video_fail_2}.
+	نستنتج من الفيديوهات السابقة أن التعديل قد حسن من الأداء من أجل الأغراض التي يتغير مظهرها بشكل كبير، لكن ليس من أجل الأغراض الصغيرة أو في حالة وجود أغراض مشابهة للغرض المطلوب ملاحقته.
+	هنا يمكن تفسير ذلك بأن النموذجين المعدلين مدربان على أخذ تغير مظهر الغرض بعين الاعتبار، وبالتالي عند وجود أغراض مشابهة فإنه لايستطيع التمييز بينها وبين الغرض المطلوب ملاحقته في أثناء تغير مظهره.
+\begin{figure}[H]
+	\centerline{\includegraphics[width=\textwidth]{images/results/failed/project_129.avi2}}
+	\caption{\textRL{مثال عن الملاحقة مع وجود أغراض مشابهة}}
+	\label{fig:video_fail_2_initial}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=\textwidth]{images/results/failed/project_129.avi3}}
+	\caption{\textRL{مثال عن الملاحقة مع وجود أغراض مشابهة}}
+	\label{fig:video_fail_2}
 \end{figure}
