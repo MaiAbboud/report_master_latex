@@ -1,0 +1,707 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[LAE, T1]{fontenc}
+\usepackage{ifthen}
+\usepackage{calc}
+\usepackage[english, arabic]{babel}
+\usepackage{cmap} % Search and copy Arabi PDF files
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{siunitx}
+% use of ams math, fonts and symbols
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{minitoc}
+\usepackage{color}
+\usepackage{everyshi}
+\usepackage{verbatim}
+\usepackage{listings} % to use listing of codes
+\usepackage{soul}
+
+
+% the package setspace allows us to change the \baseline 
+%  (the vertical length of a line), it has three commands:
+% \doublespacing    : for double spacing
+% \onehalfspacing  : for one line and a half spacing
+% \singlespacing     : for default one line spacing
+\usepackage{setspace}
+\doublespacing
+%\onehalfspacing
+%\singlespacing
+%%
+%\renewcommand{\baselinestretch}{1.66}
+%\renewcommand{\baselinestretch}{1.3}
+%\setlength{\baseline}{1.2\baseline}
+
+%%%\RequirePackage[algo2e,french,boxruled,algochapter]{algorithm2e}
+%\RequirePackage[ruled,chapter]{algorithm}
+%\renewcommand{\listalgorithmname}{\textRL{قائمة الخوارزميات}}
+%%%%\renewcommand{\listalgorithmcfname}{\textRL{قائمة الخوارزميات}}
+
+%\textthol{حسن الخط حلية الكاتب}
+%
+%\textmash{حسن الخط حلية الكاتب}
+%
+%\textshado{حسن الخط حلية الكاتب}
+%
+%\textgranada{حسن الخط حلية الكاتب}
+
+%\author{\Huge \textrehan{\textRL{د.  أيمن زريقي}}}
+%\author{\Huge \textouhod{\textRL{د.  أيمن زريقي}}}
+%\author{\Huge \textmohanad{\textRL{د.  أيمن زريقي}}}
+%\author{\Huge \textostora{\textRL{د.  أيمن زريقي}}}
+%\author{\Huge \textmateen{\textRL{د.  أيمن زريقي}}}
+%%\author{\LARGE {\textRL{تأليف الدكتور المهندس~:~\    أيمن زريقي}}}
+\date{\selectlanguage{arabic}\today}%
+\usepackage{fancyhdr}
+\usepackage{lastpage} % enable use of Page n Of m
+% like :
+% \rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
+
+%\renewcommand \thechapter {\textLR{\arabic{chapter}}}
+%
+
+\usepackage{lscape}
+
+\renewcommand\theequation
+  {\textLR{\textLR{\arabic{equation}}.\thechapter}}
+%
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1] {{\markright{\thesection\ #1}}}
+%
+%\renewcommand{\thepart}{\textLR{\Roman{part}}}
+%
+%\renewcommand\thesection
+%  {\textLR{\thechapter.{\textLR{\arabic{section}}}}}
+%
+%\renewcommand\thesubsection
+%  {\textLR{\thesection.{\textLR{\arabic{subsection}}}}}
+%
+%\renewcommand\thesubsubsection
+%  {\textLR{\thesubsection.{\textLR{\arabic{subsubsection}}}}}
+%
+%\renewcommand \thepage
+%    {\textLR{\arabic{page}}}
+
+
+
+
+\renewcommand\addcontentsline[3]{%
+\addtocontents{#1}{%
+\protect\contentsline{#2}{#3}{\I{\thepage}}}}
+
+%\renewcommand \thepage
+%    {\textLR{\page}}
+
+%\renewcommand \appendix
+  %  {\textLR{AZ}}
+
+%\setcounter{tocdepth}{3}
+
+%%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%%\renewcommand{\sectionmark}[1] {\markright{\textLR{\thesection}\ #1}}
+
+
+% change the enumeration of chapter, section, subsection, ...
+\renewcommand{\thepart}{\textLR{\Roman{part}}}
+\renewcommand \thechapter {\textLR{\arabic{chapter}}}
+
+\renewcommand\thesection {\textLR{{\textLR{\arabic{section}.\thechapter}}}}
+\renewcommand\thesubsection {\textLR{{\textLR{\arabic{subsection}.\thesection}}}}
+\renewcommand\thesubsubsection {\textLR{{\textLR{\arabic{subsubsection}.\thesubsection}}}}
+
+%% right to left numbering of sections
+%%%\renewcommand\thesection {\textLR{-{\textLR{\arabic{section}-\thechapter}}}}
+%%%\renewcommand\thesubsection {\textLR{-{\textLR{\arabic{subsection}\thesection}}}}
+%%%\renewcommand\thesubsubsection {\textLR{-{\textLR{\arabic{subsubsection}\thesubsection}}}}
+%
+
+
+% left to right numbering of sections
+%%\renewcommand\thesection {\textLR{\thechapter.{\textLR{\arabic{section}}}}}
+%%\renewcommand\thesubsection {\textLR{\thesection.{\textLR{\arabic{subsection}}}}}
+%%\renewcommand\thesubsubsection {\textLR{\thesubsection.{\textLR{\arabic{subsubsection}}}}}
+%
+
+
+\renewcommand \thepage {\textLR{\arabic{page}}}
+
+\renewcommand \chaptername {\textLR{\arabic{الفصل}}}
+
+\renewcommand\addcontentsline[3]{%
+\addtocontents{#1}{%
+\protect\contentsline{#2}{#3}{\I{\thepage}}}}
+
+\newcommand \azcite[1] {\textLR{\cite{#1}}}
+
+\newcommand \citeLR[1] {\textLR{\cite{#1}}}
+\newcommand \citeRL[1] {\textRL{\cite{#1}}}
+
+\def \DetailedCalculation       {1}
+\def \MidiumDetailedCalculation {2}
+\def \NotDetailedCalculation {3}
+
+\def \aztrue {1}
+\def \azfalse {0}
+
+
+\newcounter{TableItem}
+\setcounter{TableItem}{0}
+
+\newcounter{DetailedCalculationFlag}
+%\setcounter{CalculationStatus}{\NotDetailedCalculation}
+\setcounter{DetailedCalculationFlag}{2}
+
+\newboolean{@bDetailedCalculationFlag}
+\setboolean{@bDetailedCalculationFlag}{false}
+
+\newcommand \EquationWithDetailes[2]{%
+	\ifthenelse{\boolean{@bDetailedCalculationFlag}}{#1}{#2}}
+
+\newcommand \SingleSpacingEquation[1]{%
+	\begin{singlespacing} {#1}  \end{singlespacing} }
+\newcommand \OnehalfSpacingEquation[1]{%
+	\begin{onehalfspacing} {#1}  \end{onehalfspacing} }
+\newcommand \DoubleSpacingEquation[1]{%
+	\begin{doublespacing} {#1}  \end{doublespacing} }
+	
+
+\newcounter{@EquationSpacing}
+\setcounter{@EquationSpacing}{0}
+
+\newcommand \ControlledSpacingEquation[1]{%
+	\ifnum \value{@EquationSpacing}=1
+		\SingleSpacingEquation{#1}
+	\else   \ifnum \value{@EquationSpacing}=15
+			\OnehalfSpacingEquation{#1}
+		\else   \ifnum \value{@EquationSpacing}=2
+				\DoubleSpacingEquation{#1}
+			\else {#1}
+			\fi
+		\fi
+	\fi}
+
+%\ifnum \theCalculationStatus  = \DetailedCalculation
+%  \include{FourrierSeries}
+%\else
+%\ifnum \theCalculationStatus  = \NotDetailedCalculation
+%  \include{DifferentialEquations}
+%\fi
+%\fi
+
+
+%\renewcommand \caption[1] {\centerline{\textRL{\figurename \thefigure : {#1}}} }
+%\newcommand \azcaption[2] {\flushleft{{\caption{#1}{#2}} #1}}
+
+%\newcommand \azcaption[2]{%
+%    \centerline{{\textRL{\figurename {#2} : {#1}}}}%
+%}
+
+% #1 is e.g Figure 1, #2 is caption text
+
+
+%\DeclareCaptionLabelFormat{azlabels}{#1 -- #2}
+%
+%%\DeclareCaptionStyle{italicingnng}{labelsep=space,justification=raggedleft,labelformat=azlabels,singlelinecheck=true}
+%\captionsetup[figure]{labelformat=azlabels}
+%
+%\DeclareCaptionStyle{italicingnng}{labelformat=azlabels}
+%\captionsetup{labelformat=azlabels}
+
+%\renewcommand \@makecaption{}
+
+
+\newcommand\azmakefigcaption[2]{%
+ \vspace{\abovecaptionskip}%
+  \sbox\@tempboxa{#1: #2}%
+  \idthenelse{\lengthtest{\wd\@tempboxa >\linewidth}}%
+	{\noindent #2: #1\par}%
+	{\centering
+		\makebox[\linewidth][c]{\usebox\@tempboxa\par}
+	}%
+  \vspace{\belowcaptionskip}%
+}
+
+%\usepackage{float}
+%\floatstyle{boxed}
+%\floatstyle{ruled}
+%\restylefloat{figure}
+
+
+%\usepackage[format=hang,justification=raggedleft,labelformat=parens,labelsep=quad]{caption}
+%\usepackage[format=hang,justification=raggedleft,labelformat=parens]{caption}
+%\usepackage[format=hang,justification=raggedleft]{caption}
+%\usepackage[config=azcaption]{caption}
+%\usepackage[hang]{azcaption}
+
+
+
+%\DeclareCaptionLabelFormat{hnamei}{hcode using #1 and #2i}
+%\DeclareCaptionFormat{azplain}{#1#2#3\par}
+
+
+%\makeatletter 
+%\renewcommand{\SepMark}[1]{\def\@SepMark{#1}} 
+%\makeatother 
+%\SepMark{.} 
+
+%
+%\DeclareCaptionLabelFormat{bfparens}{(\textRL{{\textbf#1}})}
+%\DeclareCaptionLabelFormat{azlfmt}{(\textRL{\textbf{1}})}
+%\captionsetup{labelformat=simple,labelsep=colon}
+
+
+%
+%\captionsetup[figure]{format=hang,labelformat=} 
+
+%\captionsetup[figure]{style=base} 
+
+%\DeclareCaptionListFormat{azparens}{\textRL{#1 : #2}}
+%%\captionsetup{format=hang,labelformat=parens} 
+%%
+%\DeclareCaptionStyle{mystyle}%
+%  {font=footnotesize,labelfont=sc,margin={10mm,0mm},listformat=default}
+%  {font=footnotesize,labelfont=sc,margin={10mm,0mm},listformat=azparens}
+%\captionsetup{style=default,labelformat=parens}
+%\captionsetup{listformat=simple}
+
+%\DeclareCaptionStyle{mystyle}%
+%[margin=5mm,justification=centering]%
+%{font=footnotesize,labelfont=sc,margin={10mm,0mm},labelformat=bfparens}
+%%\captionsetup{style=mystyle}
+
+
+%\DeclareCaptionFormat{reverse}{#3#2#1}
+%\DeclareCaptionFormat{reverse}{#1#3#2}
+%\DeclareCaptionLabelFormat{fullparens}%
+%{(\bothIfFirst{#1}{˜}#2)}
+%%{(\bothIfFirst{#1}{˜}#2)}
+%\DeclareCaptionLabelSeparator{fill}{\hfill}
+%%\captionsetup{format=reverse,%labelformat=fullparens,
+%%labelsep=fill,font=small,labelfont=it}
+
+%\DeclareCaptionLabelFormat{andtable}%
+%{\figurename}
+%\captionsetup{labelformat=andtable}
+
+%\DeclareCaptionLabelFormat{simple}{\bothIfFirst{#2}{\nobreakspace}#1}
+%\clearcaptionsetup[labelformat]{figure}
+%
+%\DeclareCaptionLabelFormat{azsimple}{{#2}{:::}#1}
+%\captionsetup{labelformat=azsimple}
+
+%\DeclareCaptionLabelFormat{parens}{#1 ::: #2}
+%\captionsetup{labelformat=parens}
+
+%\DeclareCaptionOption{figurename}{\caption@SetName{figure}{#1}}
+%\DeclareCaptionLabelFormat{azparens}{}
+
+%\DeclareCaptionLabelFormat{azparens}{\textRL{#1  --- #2}}
+%\captionsetup{labelformat=azparens}
+
+%\captionsetup[figure]{format=hang,textfont=it,labelfont={rm,bf},labelformat=default,labelsep=period,
+%	margin=5pt,justification=raggedleft}
+
+%\DeclareCaptionOption{labelformat}{\caption@setlabelformat{#1}}
+%\DeclareCaptionOption{labelformat=parens}
+
+\renewcommand \thefigure
+    {\textLR{{\textLR{\arabic{figure}}}.\thechapter}}
+
+
+
+\renewcommand \thetable
+    {\textLR{{\textLR{\arabic{table}}}.\thechapter}}
+
+%\long\def\fnum@figure{\textRL{\figurename \nobreakspace : \thefigure}}
+%\def\fnum@figure{\if@rl{\I{\thefigure}\nobreakspace\figurename}%
+%\else
+%{\figurename\nobreakspace\thefigure}%
+%\fi}
+
+
+\def\fnum@figure{\I{\thefigure}\nobreakspace\figurename}
+
+%\long\def\@makecaption#1#2{%
+%\def \@makecaption#1#2{%
+%  \vskip\abovecaptionskip%
+%  \sbox\@tempboxa{\textRL{#2 : #1}}%
+%  \ifdim \wd\@tempboxa >\hsize%
+%    \textLR{#2: #1}\par%
+%  \else%
+%    \global \@minipagefalse%
+%    \hb@xt@\hsize{\hfil \textRL{#2--- : #1} \hfil}%
+%  \fi%
+%  \vskip\belowcaptionskip}%
+
+\newsavebox{\tempboxaz}
+
+%\newcommand\captionaz[1]{%
+\newcommand\azfigcaption[1]{%
+  \refstepcounter{figure} 
+  \ifx\@captype\@undefined
+    \@latex@error{\noexpand\caption outside float}\@ehd
+    \expandafter\@gobble%
+  \else%
+	\ifx\@captype\@figure%
+	\else %
+               \sbox\tempboxaz{\textRL{\figurename \  \thefigure : #1}}
+	    \vskip\abovecaptionskip%
+
+	    \ifdim \wd\tempboxaz >\hsize%
+%		\noindent\textRL{\figurename \  \thefigure : #1\hfil}\par%
+		{\figurename \  \thefigure\ : #1\hfil}\par%
+	    \else%
+     	          \textRL{\hfil \figurename \  \thefigure : #1 \hfil}%
+	    \fi%
+	    \vskip\belowcaptionskip%
+	\fi%
+  \fi%
+  }
+
+
+
+%\DeclareCaptionLabelFormat{thu2}{{ {#1} ~\rmfamily \quad-+=+ #2}}
+%\DeclareCaptionLabelSeparator{thu1}{\hspace{2em}}
+%%\DeclareCaptionFont{thu}{\dawu[1.5]}
+%\captionsetup{labelformat=thu2,labelsep=thu1}
+%%\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
+%\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
+%\captionsetup[subfloat]{labelformat=simple,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
+%\renewcommand{\thesubfigure}{(\alph{subfigure})}
+%\renewcommand{\thesubtable}{(\alph{subtable})}
+
+%\newcommand{\acaption}[2]{%
+% \vspace{\abovecaptionskip}%
+% \sbox{\@tempboxa}{#1: #2}%
+% \ifthenelse{\wd\@tempboxa > \hsize}{%
+% #1: #2\par}{%
+% \setboolean{@minipage}{false}%
+% \centerline{\usebox{\@tempboxa}}%
+% }%
+% \vspace{\belowcaptionskip}%
+% }
+
+
+
+%\usepackage[format=default,justification=raggedleft]{caption}
+%\usepackage[format=plain]{caption}
+
+
+
+
+
+\newcommand{\azmaketitle}{%
+%  \begin{center}
+%   \vspace{5cm}
+%    \vspace{6cm}\par
+%    {\Large{     \  }}\par
+%    \vspace{5cm}
+%    {\colorB\Huge\textthol{\@title}}\par
+     {\Huge\textmash{\@title}}\par
+%    {\colorB\Huge\textshado{\@title}}\par
+%    {\colorB\Huge\textgranada{\@title}}\par
+    \vspace{5cm}
+    {\Huge\@author}\par
+    \vspace{1cm}
+    {\huge\@date}\par
+%  \end{center}
+}
+
+\newcommand{\aztitling}{
+  \begin{titlepage}
+  \azmaketitle
+  \vspace{\stretch{8}}
+\end{titlepage}}
+
+
+
+\usepackage{graphicx}
+
+%\usepackage{./az_bsheaders}
+
+\usepackage[table, svgnames]{xcolor}	% Enabling colors by their 'svgnames'
+%\usepackage[svgnames]{xcolor}
+
+%\definecolor{bl}{rgb}{0.0,0.2,0.6} 
+
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}
+%\usepackage[compact]{titlesec} 
+\usepackage[outermarks]{titlesec}
+
+%\titleformat{\chapter} {\LARGE\sffamily\slshape} {\thechapter}{1em}{}
+\titleformat{\chapter}[display]
+%{\center \color{DarkTurquoise}}
+{\center \color{Black}}
+{\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{2pt}%
+\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{1pc}%
+\Huge{\chaptertitlename} \thechapter}
+{1pc}
+%{\center \color{DarkTurquoise}%
+{\center \color{Black}%
+\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{2pt}%
+\titlerule[1pt]\vspace{2pt}\titlerule[1pt]\vspace{1pc}%
+\Huge \vspace{2pc} }
+%\Huge \vspace{2pc} \textgranada}
+
+
+%% Change font of al section commands
+%\allsectionsfont{\color{blue}\scshape\selectfont}
+%\chapterfont{\color{Crimson}\normalfont\scshape\selectfont}
+%\sectionfont{\color{DarkRed}\ttfamily\scshape\selectfont}
+%\subsectionfont{\color{DarkMagenta}\fontfamily{cmr}\fontseries{b}\selectfont}
+%\subsubsectionfont{\color{MediumBlue}}
+
+%%\allsectionsfont{\color{Blue}}
+\allsectionsfont{\color{Black}}
+%\chapterfont{\color{DarkTurquoise}\ttfamily\selectfont}%LightSeaGreen
+%\chapterfont{\color{DarkTurquoise}}%LightSeaGreen
+%%\chapterfont{\flushright \color{DarkTurquoise}\sectionrule{3ex}{0pt}{-3ex}{6pt}}%LightSeaGreen
+%\chapterfont{\flushleft \color{DarkTurquoise} \hrule \vspace{3pt}\hrule \vspace{3pt} \hrule \vspace{20pt}}%LightSeaGreen
+\sectionfont{\color{Black}}%DarkRed}}
+%%\sectionfont{\color{FireBrick}}%DarkRed}}
+\subsectionfont{\color{Black}}
+%%\subsectionfont{\color{DarkMagenta}}
+%\subsectionfont{\color{Yellow}}
+%%\subsubsectionfont{\color{MediumBlue}}
+\subsubsectionfont{\color{Black}}
+%\subsubsectionfont{\color{Yellow}}
+
+%\renewcommand{\sfdefault}{aepetra}
+%\renewcommand{\ttdefault}{aemashq}
+
+% use includepdf to add already exiting pdf pages
+\usepackage{pdfpages}
+\usepackage[left, pagewise]{lineno}
+\renewcommand {\thelinenumber} %
+	{\small \textLR{\arabic{linenumber}\hspace{0.5cm}}}
+
+
+\newcommand \rootdir {D:/Latex_Works/Electrotecnique/PowerElectronics/az_Power_Electronics_Book}
+
+
+\newcommand{\clearemptydoublepage}{ \newpage{\pagestyle{plain}\cleardoublepage}}
+
+\newcommand{\totallyemptydoublepage}{ \newpage{\pagestyle{empty}\cleardoublepage}}
+
+% use this command for draft version of this book
+\newcommand \draftbook {%
+	\fancyfoot[C]{\color{red}\bfseries %
+	\vspace{0.75cm} \large\textRL{\\ نسخة أولية غير قابلة للنشر}}%
+	\renewcommand{\footrulewidth}{1pt}%
+	}
+
+
+%%%%%%%%%%%%%%%%
+%% background front-page image
+%\usepackage{eso-pic}
+%\newcommand\BackgroundPic{%
+%\put(0,0){%
+%\parbox[b][\paperheight]{\paperwidth}{%
+%\vfill
+%\centering
+%\includegraphics[width=\paperwidth, %
+%		height=\paperheight,keepaspectratio]{power_electronics.png}%
+%\vfill
+%}}}
+
+
+%\usepackage{watermark}
+%\thiswatermark{\centering \put(112,-550){\includegraphics[scale=0.9]{power_electronics.png}} }
+
+
+
+%\usepackage{graphicx}
+%\usepackage[firstpage]{draftwatermark}
+%\SetWatermarkLightness{0.9}
+%\SetWatermarkText{\includegraphics[angle=-45]{power_electronics.png}
+\usepackage{watermark}
+
+%\usepackage{wallpaper}
+%\ThisLRCornerWallPaper{0.5}{power_electronics.png}
+%\LRCornerWallPaper{0.5}{power_electronics.png}
+%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\usepackage{lipsum}% for auto generating text
+\usepackage{afterpage}
+
+
+
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+%\geometry{lmargin=0pt,rmargin=0pt,paperwidth=175.00mm,
+%                 tmargin=0pt,top=0pt,bottom=0pt,paperheight=250.00mm,
+%                 marginparwidth=0pt, marginparsep=0pt} 
+
+\geometry{paperwidth=210mm, lmargin=30mm,rmargin=30mm,
+			tmargin=25mm, paperheight=297mm} 
+
+\usepackage{longtable}
+%\usepackage{float}
+
+
+
+\newcounter{azRowNumber}
+\setcounter{azRowNumber}{0}
+
+
+\usepackage{setspace}
+%\usepackage{tabu}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow} 	
+\usepackage{alltt}
+\usepackage{textcomp}
+\usepackage{amsmath,empheq}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+
+\lstset{language=C}
+\renewcommand {\thelstlisting}  
+    {\textLR{{\textLR{\arabic{lstlisting}}}.\thechapter}}
+
+%\include{FP695_cover_frontpage}
+%\include{FP695_cover_frontpage_inside}
+
+%\pagenumbering{roman}
+\pagenumbering{arabic}
+
+\selectlanguage{arabic}
+\TOCLanguage{arabic}
+
+\pagestyle{fancy}
+
+\fancyhf{} % delete current setting for header and footer
+%\fancyhead[LE,RO]{\bfseries \textLR{\thepage}}
+%\fancyhead[LO]{\bfseries\rightmark}
+%\fancyhead[RE]{\bfseries\leftmark}
+
+% the following was very good
+%%\fancyhead[RO,LE]{\bfseries \textLR{\thepage}}
+%%\fancyhead[RE]{\bfseries\rightmark}
+%%\fancyhead[LO]{\bfseries\leftmark}
+
+%\renewcommand \thesection
+%  {\textLR{\thechapter.{\textLR{\arabic{section}}}}}
+
+
+%\renewcommand \leftmark {}
+%\renewcommand \rightmark {\textRL{\sectionmark{} \thesection}}
+
+
+% add header
+%\fancyhead[LE,RO]{\bfseries \textLR{\thepage}}
+%\fancyhead[LO]{\bfseries \textRL{\rightmark}}
+%\fancyhead[RE]{\bfseries \textRL{\leftmark}}
+
+\fancyhead[RE,LO]{\bfseries \textLR{\thepage}}
+%\fancyhead[RO]{\bfseries \textRL{\rightmark}}
+%\fancyhead[LE]{\bfseries \textRL{\leftmark}}
+%\fancyhead[RO]{\bfseries \textRL{\leftmark}}
+%\fancyhead[LE]{\bfseries \textRL{\rightmark}}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % make space for the rule
+
+
+
+% add footer
+%\fancyfoot[LE,RO]{\bfseries \textLR{\thepage}}
+%\fancyfoot[LO]{\bfseries \textRL{\leftmark}}
+%\fancyfoot[RE]{\bfseries \textRL{\rightmark}}
+%\renewcommand{\footrulewidth}{0.5pt}
+
+% use this command for draft version of this book
+% comment this line for final version
+%%%%\draftbook
+
+\fancypagestyle{plain}{%
+\fancyhead{} % get rid of headers on plain pages
+\renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+%\pagestyle{headings}
+%\pagestyle{empty}
+
+
+
+%\azmaketitle{}
+%%%%\maketitle{}
+%%%%\clearemptydoublepage
+
+
+% Thanks
+\include{az_PowerElectronics_Thanks}
+\clearemptydoublepage
+
+%\aztitling{}
+
+% to begin the pagination from the first page incluing the table of matter
+%\mainmatter
+
+%\pagestyle{myheadings}
+
+\input{front_page.tex}
+\tableofcontents 
+%\clearemptydoublepage
+%\dominitoc
+
+
+
+\listoffigures
+%
+%%%%%%%%%% \DontWriteThisInToc
+\listoftables
+
+%\listofalgorithmes
+
+%\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\parskip}{\baselineskip}
+
+%\selectlanguage{english}
+%\renewcommand \chaptername {\textLR{الفصل}}
+%\def\chaptername{\textAR{\alef\lam\fa\sad\lam}}%
+%\selectlanguage{arabic}
+%\chapter{\textRL{مقطعات الجهد المستمر}}
+%\label{ch:dc_chopper}
+%\include{az_ControlledRectifier_SinglePhase}
+%\selectlanguage{english}
+%\chapter{\textRL{المقوم المتحكم به }}
+%\label{ch:single_phase_controlled_rectifier}
+
+% turn on the line numbering
+%\linenumbers
+%\rightlinenumbers*
+%\leftlinenumbers*
+%\pagewiselinenumbers
+%\input{abstract.tex}
+%\input{general_introduction.tex}
+%\input{literature_review.tex}
+%\input{model.tex}
+\input{results.tex}
+\input{abbreviation.tex}
+\input{conclusion.tex}
+\input{bibliography.tex}
+
+\renewcommand \appendixname {\textRL{الملحق}}
+\appendix
+%\renewcommand \thechapter 
+%  {\textLR{\arabic{chapter}}}
+\renewcommand{\thechapter}{\textLR{\Roman{chapter}}}
+\renewcommand \bibname {\hfill{\textRL{المصادر}}}
+%\bibliography{az_references}
+
+
+
+\end{document}
+

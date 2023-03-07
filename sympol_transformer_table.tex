@@ -1,0 +1,23 @@
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c c} 
+		\hline
+		\textLR{sympol} & \textLR{meaning} \\ [0.5ex] 
+		\hline\hline
+		$d$ & \textRL{بعد النموذج}  \\ 
+		$h$ &  \textLR{MHA} \textRL{عدد الرؤوس في}\\
+		$L$ & \textLR{tokens} \textRL{عدد عناصر سلسلة الدخل، أو عدد الـ}\\
+		$X \in \mathds{R}^{L \mathsf{x}d}$&\textRL{دخل المرمز}\\
+		$W^k \in \mathds{R}^{d \mathsf{x} d_x}$&\textLR{key}\textRL{مصفوفة الأوزان لشعاع الـ }\\
+		$W^q \in \mathds{R}^{d \mathsf{x} d_x}$&\textLR{query}\textRL{مصفوفة الأوزان لشعاع الـ }\\
+		$W^v \in \mathds{R}^{d \mathsf{x} d_v}$&\textLR{value}\textRL{مصفوفة الأوزان لشعاع الـ }\\
+		$W^k_i,W^q_i \in \mathds{R}^{d\mathsf{x}d_k/h};W^v_i\in \mathds{R}^{d\mathsf{x}d_v/h}$&\textRL{مصفوفات الأوزان لكل  رأس}\\
+		$W^o \in \mathds{R}^{d_v \mathsf{x}d}$&\textRL{مصفوفة الأوزان لشعاع الخرج }\\
+		$Q = XW^q \mathds{R}^{L \mathsf{x}d_k}$&\textLR{query}\\
+		$K = XW^k \mathds{R}^{L \mathsf{x}d_k}$&\textLR{key}\\
+		$V = XW^v \mathds{R}^{L \mathsf{x}d_v}$&\textLR{value}\\
+		\hline
+	\end{tabular}
+	\caption{\textRL{الرموز المستخدمة في شرح بنية المحول مع أبعاد المصفوفات}}
+	\label{table:transformer_sympols}
+\end{table}
