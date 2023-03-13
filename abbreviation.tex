@@ -1,11 +1,18 @@
+\subsubsection{قائمة الاختصارات والمصطلحات}
 \selectlanguage{english}
-\begin{longtable}{>{\hspace{0pt}}m{0.15\linewidth}>{\hspace{0pt}}m{0.45\linewidth}>{\hspace{0pt}}m{0.45\linewidth}}
-\textRL{الاختصار } & \textRL{المعنى باللغة الانكليزية} & \textRL{المعنى باللغة العربية} \endfirsthead
-\textLR{ATOM} & \textLR{Accurate Tracking by Overlap Maximization} & \textRL{إحدى خوارزميات الملاحقة} \\ \hline
+%\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\begin{center}
+%\begin{longtable}[c]{>{\hspace{0pt}}m{P{0.15\linewidth}}>{\hspace{0pt}}m{0.45\linewidth}>{\hspace{0pt}}m{0.45\linewidth}}
+\begin{longtable}{|P{2.6cm}|P{6cm}|P{6cm}|}
+ \hline
+\textRL{الاختصار } & \textRL{المعنى باللغة الانكليزية} & \textRL{المعنى باللغة العربية} \endfirsthead \hline
+\textLR{ATOM} & \textLR{Accurate Tracking by Overlap Maximization} & \textRL{إحدى خوارزميات الملاحقة} \\ \hline \hline
 \textLR{ACT} & \textLR{adaptive clustering transformer} & \textRL{إحدى خوارزميات الكشف} \\ \hline
 & \textLR{appearance model} & \textRL{نموذج المظهر} \\ \hline
 & \textLR{Attention} & \textRL{الانتباه} \\ \hline
-\textLR{AO} & \textLR{average overlape} & \textRL{معدل التداخل} \\ \hline
+\textLR{AO} & \textLR{average overlap} & \textRL{معدل التداخل} \\ \hline
 & \textLR{backbone } & \textRL{النموذج الخاص باستخلاص السمات} \\ \hline
 \textLR{BEiT} & \textLR{BERT Pre-Training of Image Transformers } & \textRL{إحدى خوارزميات التصنيف} \\ \hline
 \textLR{BCE} & \textLR{binary cross-entropy } & \textRL{الانتروبيا المتقاطعة الثنائية} \\ \hline
@@ -13,8 +20,8 @@
 & \textLR{candidates} & \textRL{المناطق المرشَّحة} \\ \hline
 & \textLR{classification response map} & \textRL{خريطة استجابة التصنيف} \\ \hline
 & \textLR{classification} & \textRL{التصنيف} \\ \hline
-& \textLR{classificayion head} & \textRL{شبكة تصنيف} \\ \hline
-\textLR{coco} & \textLR{Common Objects in Context dataset} & \textRL{مجموعة معطيات خاصة بالكشف والتجزئة للصور} \\ \hline
+& \textLR{classification head} & \textRL{شبكة تصنيف} \\ \hline
+\textLR{COCO} & \textLR{Common Objects in Context dataset} & \textRL{مجموعة معطيات خاصة بكشف وتجزئة الصور} \\ \hline
 \textLR{CV} & \textLR{computer vision} & \textRL{الرؤية الصنعية} \\ \hline
 & \textLR{concatenate} & \textRL{سلسلة، ضم} \\ \hline
 & \textLR{Confidence Map} & \textRL{خريطة الوثوقية} \\ \hline
@@ -111,7 +118,7 @@
 \textLR{TSP} & \textLR{Rethinking transformerbased set prediction for object detection} & \textRL{إحدى خوارزميات الكشف التي تستخدم المحول} \\ \hline
 & \textLR{retrieval systems} & \textRL{أنظمة الاسترجاع} \\ \hline
 & \textLR{scale} & \textRL{مقياس} \\ \hline
-& \textLR{score head} & \textRL{for classication احتمالية وجود غرض} \\ \hline
+& \textLR{score head} & \textRL{  احتمالية وجود غرض} \\ \hline
 & \textLR{score} & \textRL{نتيجة} \\ \hline
 & \textLR{search window} & \textRL{نافذة البحث} \\ \hline
 & \textLR{Segmentation Mask} & \textRL{قناع التجزئة} \\ \hline
@@ -157,6 +164,8 @@
 \textLR{YOLOS} & \textLR{You only look at one sequence} & \textRL{إحدى خوارزميات الكشف التي تستخدم المحول} \\ \hline
 \textLR{JFT-300M} &  & \textRL{مجموعة معطيات خاصة بمسألة تصنيف الصور} \\ \hline
 \textLR{L1} &  & \textRL{تابع الخطأ الذي يحسب مجموع القيم المطلقة للفروقات} \\ \hline
-\textLR{L2} &  & \textRL{تابع الخطأ الذي يحسب مجموع مربعات الفروق}
+\textLR{L2} &  & \textRL{تابع الخطأ الذي يحسب مجموع مربعات الفروق}\\ \hline
 \end{longtable}
-\selectlanguage{arabic}
+\end{center}
+
+	\selectlanguage{arabic}
