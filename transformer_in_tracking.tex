@@ -103,18 +103,33 @@ $2021$
 وبسبب تفوق خوارزمية 
 \textLR{SwinTrack\cite{swinTrack}}
 في الأداء والسرعة، قررنا أن نعتمدها في بحثنا.
-\begin{figure}[!h]
-	\centerline{\includegraphics[width=0.6\textwidth]{images/transformerInTrackingComapre.png}}
-	\caption{
-		\textRL{مقارنة بين بعض الخوارزميات التي تستخدم المحول مع خوارزميات الملاحقة الأخرى
-			 من ناحية السرعة و الأداء على مجموعة المعطيات}
-		 \textLR{LaSOT\cite{Lasot}}
-		\textLR{\cite{swinTrack}}
-		}
+\vspace{-5.0mm}
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.6\textwidth]{images/transformerInTrackingComapre.png}}
+	\caption{\textRL{
+			مقارنة بين بعض الخوارزميات التي تستخدم المحول مع خوارزميات
+	}}
 	\label{fig:comapre}
 \end{figure}
+\vspace{-7.0mm}
+\centerline{\textRL{
+		الملاحقة الأخرى  من ناحية السرعة و الأداء على مجموعة المعطيات
+			 \textLR{LaSOT\cite{Lasot}}
+		\textLR{\cite{swinTrack}}
+}}	
 
-\begin{table}[!h]
+%\begin{figure}[!h]
+%	\centerline{\includegraphics[width=0.6\textwidth]{images/transformerInTrackingComapre.png}}
+%	\caption{
+%		\textRL{مقارنة بين بعض الخوارزميات التي تستخدم المحول مع خوارزميات الملاحقة الأخرى
+%			 من ناحية السرعة و الأداء على مجموعة المعطيات}
+%		 \textLR{LaSOT\cite{Lasot}}
+%		\textLR{\cite{swinTrack}}
+%		}
+%	\label{fig:comapre}
+%\end{figure}
+
+\begin{table}[H]
 	\centering
 	\begin{tabular}{c c c c c c c} 
 		\hline
@@ -127,13 +142,14 @@ $2021$
 		\hline
 	\end{tabular}
 	\caption{
-		\begin{footnotesize}
-		\textRL{مقارنة بين خوارزميات الملاحقة السابقة}
-		\textRL{من أجل معطيات التدريب}
-		\textLR{LaSOT\cite{Lasot}}
-		\end{footnotesize}}
+		\textRL{مقارنة بين خوارزميات الملاحقة السابقة}}
 	\label{table:compare__trans_trackers}
 \end{table}
+\vspace{-8.0mm}
+\centerline{\textRL{
+		\textRL{من أجل معطيات التدريب}
+\textLR{LaSOT\cite{Lasot}}	
+}}	
 أما فيما يتعلق بالملاحقة لعدة أغراض فهناك خوارزمية 
 \textLR{TrackFormer\cite{TrackFormer}}
 والتي استخدمت بنية محول مشابهة لخوارزمية

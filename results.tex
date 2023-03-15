@@ -54,7 +54,7 @@ $Value_{cover} \in \{0,1,2,...,8\}$
 حيث تعبر القيمة $0$ عن غياب الغرض تماماً، وتعبر القيمة $8$ عن ظهور الهدف بشكل كامل.
 \item \textLR{cut$\_$by$\_$image.label}:
 حيث تعبر القيمة
-$1$ عن وجود جزء من الغرض خارج نطاق الصورة،و تعبر القيمة $0$ عن وجود  كامل الغرض داخل نطاق الصورة.  
+$1$ عن وجود جزء من الغرض خارج نطاق الصورة، و تعبر القيمة $0$ عن وجود  كامل الغرض داخل نطاق الصورة.  
 \item \textLR{meta$\_$info.ini}:
 يحوي هذا الملف على رابط الفيديو، طوله، تردده، صنف الغرض، صنف الحركة، دقة الصورة.
 \end{itemize}
@@ -101,33 +101,59 @@ $1$ عن وجود جزء من الغرض خارج نطاق الصورة،و تع
 \textLR{GOT-10k}،
  كما يوضح الشكل
 \ref{fig:got10k_submit}،
-\begin{figure}[!h]
+	
+\begin{figure}[H]
 	\centerline{\includegraphics[width=\textwidth]{images/got10k_submit}}
-	\caption{
-		\begin{footnotesize}
-		\textRL{المخدم الخاص بعملية اختبار الملاحق من أجل مجموعة المعطيات}
-		\textLR{GOT-10k}
-		\textLR{\cite{got10k}}
-		\end{footnotesize}
-	}
+	\caption{\textRL{
+					\textRL{المخدم الخاص بعملية اختبار الملاحق من أجل مجموعة المعطيات}
+	}}
 	\label{fig:got10k_submit}
 \end{figure}
+\vspace{-8.0mm}
+\centerline{\textRL{
+				\textLR{GOT-10k}
+		\textLR{\cite{got10k}}
+}}	
+
+%\begin{figure}[!h]
+%	\centerline{\includegraphics[width=\textwidth]{images/got10k_submit}}
+%	\caption{
+%		\begin{footnotesize}
+%		\textRL{المخدم الخاص بعملية اختبار الملاحق من أجل مجموعة المعطيات}
+%		\textLR{GOT-10k}
+%		\textLR{\cite{got10k}}
+%		\end{footnotesize}
+%	}
+%	\label{fig:got10k_submit}
+%\end{figure}
 حيث يمتلك هذا المخدم القيم الحقيقية ويقارنها بالقيم المرسلة، ومن ثم يحسب كل من المعياريين
 $mAO,mSR$
 كما في الشكل
 \ref{fig:got10k_result_mai}.
 \newline
 لمنع استخدام المخدم للتدريب أو لتعديل أوزان النموذج بحسب نتائج الأداء، فإنه لا يسمح بإرسال أكثر من ملف خلال $48$ ساعة.
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centerline{\includegraphics[width=\textwidth]{images/got10k_result_mai}}
-	\caption{
-		\begin{footnotesize}
-		\textRL{مثال عن نتائج اختبار بعض خوارزميات الملاحقة من أجل مجموعة المعطيات}
-		\textLR{GOT-10k}
-		\end{footnotesize}
-	}
+	\caption{\textRL{
+	\textRL{مثال عن نتائج اختبار بعض خوارزميات الملاحقة من أجل مجموعة المعطيات}
+	}}
 	\label{fig:got10k_result_mai}
 \end{figure}
+\vspace{-8.0mm}
+\centerline{\textRL{
+	\textLR{GOT-10k}
+}}	
+
+%\begin{figure}[H]
+%	\centerline{\includegraphics[width=\textwidth]{images/got10k_result_mai}}
+%	\caption{
+%		\begin{footnotesize}
+%		\textRL{مثال عن نتائج اختبار بعض خوارزميات الملاحقة من أجل مجموعة المعطيات}
+%		\textLR{GOT-10k}
+%		\end{footnotesize}
+%	}
+%	\label{fig:got10k_result_mai}
+%\end{figure}
 \subsection{معايير التقييم
 \textLR{Benchmarks}
 \label{section:benchmark}
@@ -546,16 +572,20 @@ $2022$.
 \begin{figure}[H]
 	\centerline{\includegraphics[width=\textwidth]{charts/successCurve}}
 	\caption{\textRL{
-	\begin{footnotesize}
-			منحني النجاح للنماذج الثلاثة، اللون الأزرق هو النموذج الأصلي، اللون الأخضر هو التجربة الأولى بكتلة انتباه بـ 
+					منحني النجاح للنماذج الثلاثة، اللون الأزرق هو النموذج الأصلي،
+		}}
+	\label{fig:successCurve}
+\end{figure}
+\vspace{-13.0mm}
+\textRL{
+			 اللون الأخضر هو التجربة الأولى بكتلة انتباه
+			بـ 
 			$4$ 
 			رؤوس، واللون البرتقالي هو التجربة الثانية بـ
 			$8$
 			رؤوس
-	\end{footnotesize}
-	}}
-	\label{fig:successCurve}
-\end{figure}
+}
+
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=\textwidth]{charts/precision curve}}
